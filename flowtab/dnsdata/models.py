@@ -12,6 +12,7 @@ class Cdn_bpsdata(models.Model):
     TimeStamp = models.DateTimeField(verbose_name='utc当前时间')
     uptime =  models.DateTimeField('更新时间',auto_now=True)
     DataInterval = models.CharField(verbose_name='粒度',max_length=100)
+    TimeStamp_cst = models.DateTimeField(verbose_name='当前时间',null=True)
     def __unicode__(self):
         return self.id
 
@@ -26,6 +27,7 @@ class Cdn_trafficdata(models.Model):
     TimeStamp = models.DateTimeField(verbose_name='utc当前时间')
     uptime =  models.DateTimeField('更新时间',auto_now=True)
     DataInterval = models.CharField(verbose_name='粒度',max_length=100)
+    TimeStamp_cst = models.DateTimeField(verbose_name='当前时间',null=True)
     def __unicode__(self):
         return self.id
 

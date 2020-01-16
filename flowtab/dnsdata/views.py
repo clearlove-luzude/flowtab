@@ -114,8 +114,8 @@ def Get_datas(request):
         date_from = '%s'%starttime + ' 00:00:00'
         date_to = '%s'%endtime + ' 23:59:59'
         try:
-            flowdata = Cdn_bpsdata.objects.all().filter(DomainName='%s'%domianname,TimeStamp__range=["%s"%date_from, "%s"%date_to]).values_list('TimeStamp','Value','HttpsValue')
-            tradata = Cdn_trafficdata.objects.all().filter(DomainName='%s'%domianname,TimeStamp__range=["%s"%date_from, "%s"%date_to]).values_list('TimeStamp','Value','HttpsValue')
+            flowdata = Cdn_bpsdata.objects.all().filter(DomainName='%s'%domianname,TimeStamp__range=["%s"%date_from, "%s"%date_to]).values_list('TimeStamp_cst','Value','HttpsValue')
+            tradata = Cdn_trafficdata.objects.all().filter(DomainName='%s'%domianname,TimeStamp__range=["%s"%date_from, "%s"%date_to]).values_list('TimeStamp_cst','Value','HttpsValue')
         except:
             status = None
         msg_dict = {}
