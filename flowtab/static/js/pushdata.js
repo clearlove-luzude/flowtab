@@ -158,11 +158,13 @@
                 // var traarr_time = new Array;
                  //var traarr_http = new Array;
                  //var traarr_https = new Array;
+                 console.log(flowarr_http);
                  for(var a = 0; a<tradata.length;a++){
                     traarr_time.push(tradata[a][''+'times'+'']);
                     traarr_http.push(tradata[a][''+'http'+'']);
                     traarr_https.push(tradata[a][''+'https'+'']);
                  }
+
         // 使用刚指定的配置项和数据显示图表。
                 //myChart.hideLoading();
                 myChart.setOption({
@@ -191,8 +193,30 @@ tooltip : {
             ],
             yAxis : [
                 {
-                    type : 'value'
-                }
+                    type : 'value',
+                    axisLabel: {
+                      formatter: function (value) {
+                        if(!value) return ''
+                                                if(value >= 1073741824){
+                                                    return (parseInt(value / 1073741824) + "GB");
+                                                } else if (value >= 1048576) {
+                                                    return (parseInt(value / 1048576) + "MB");
+                                                } else if (value >= 1024) {
+                                                    return (parseInt(value / 1024) + "KB");
+                                                } else {
+                                                    return value + "B";
+                                                }
+                      }
+                  }
+},
+                                    {
+                  type: 'value',
+                  name: '字节',
+                  axisLabel: {
+                      formatter: '{value} %'
+                  }
+                                    },
+
             ],
             series : [
                 {
@@ -239,8 +263,29 @@ tooltip : {
             ],
             yAxis : [
                 {
-                    type : 'value'
-                }
+                    type : 'value',
+                    axisLabel: {
+                      formatter: function (value) {
+                        if(!value) return ''
+                                                if(value >= 1073741824){
+                                                    return (parseInt(value / 1073741824) + "GB");
+                                                } else if (value >= 1048576) {
+                                                    return (parseInt(value / 1048576) + "MB");
+                                                } else if (value >= 1024) {
+                                                    return (parseInt(value / 1024) + "KB");
+                                                } else {
+                                                    return value + "B";
+                                                }
+                      }
+                  }
+                    },
+                                    {
+                  type: 'value',
+                  name: '字节',
+                  axisLabel: {
+                      formatter: '{value} %'
+                  }
+                                    },
             ],
             series : [
 

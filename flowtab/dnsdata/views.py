@@ -84,6 +84,18 @@ def DomainName_info(request):
             lists.append(msg_dict)
         return HttpResponse(json.dumps(lists), content_type='application/json')
 
+def bytes2human(n):
+    symbols = ('K', 'M', 'G', 'T', 'P', 'E', 'Z', 'Y')
+    prefix = {}
+    for i, s in enumerate(symbols):
+        prefix[s] = 1 << (i + 1) * 10
+    for s in reversed(symbols):
+        if n >= prefix[s]:
+            value = float(n) / prefix[s]
+            return '%.1f%s' % (value,s)
+    return '%sB' % n
+
+
 @login_required
 def Get_datas(request):
     if request.method == 'GET':
@@ -109,12 +121,16 @@ def Get_datas(request):
         msg_dict = {}
         flowlists = []
         tralist = []
+        flowdata = sorted(flowdata)
         for i in flowdata:
-        #print(i[0],i[1],i[2])
-            flowlists.append({'times':str(i[0]),'http':i[1],'https':i[2]})
+            httpdata = int(i[1].split('.')[0])
+            httpsdata = int(i[2].split('.')[0])
+            flowlists.append({'times': str(i[0]), 'http': httpdata, 'https': httpsdata})
+        tradata = sorted(tradata)
         for i in tradata:
-        #print(i[0], i[1], i[2])
-            tralist.append({'times': str(i[0]), 'http': i[1], 'https': i[2]})
+            httpdata = int(i[1].split('.')[0])
+            httpsdata = int(i[2].split('.')[0])
+            tralist.append({'times': str(i[0]), 'http': httpdata, 'https': httpsdata})
         msg_dict['flow'] = flowlists
         msg_dict['tra'] = tralist
         msg_dicts = {}
