@@ -132,8 +132,10 @@
             var name = document.getElementById("yuming").options[id].text;
             var startTime =document.getElementById("start").value;
             var endTime =document.getElementById("end").value;
-            console.log(name,startTime,endTime);
-            var data = {"domianname" : name, "starttime" : startTime, "endtime" : endTime};
+            var data_id = document.getElementById("datainterval").selectedIndex;
+            var datainterval = document.getElementById("datainterval").options[data_id].text;
+            console.log(name,startTime,endTime,datainterval);
+            var data = {"domianname" : name, "starttime" : startTime, "endtime" : endTime, "datainterval": datainterval};
             if( startTime == null || startTime == "" ||  endTime == null || endTime == "" ){
                 alert ('请选择时间间隔');
             }else{

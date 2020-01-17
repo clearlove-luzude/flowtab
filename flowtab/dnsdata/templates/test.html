@@ -34,18 +34,20 @@
                                 <div class="layui-input-block">
                                     <select name="city" lay-verify="required" lay-search id = "yuming">
                                       <!-- <option value=""></option>
-                                      <option value="0">baidu.com</option>
-                                      <option value="1">aliyun.com</option>
-                                      <option value="2">sina.com</option>
                                       <option value="3">tenxun.com</option> -->
-
-                                    </select>
+                                        </select>
                                     <hr class="hr15">
                                     <div class="layui-inline layui-show-xs-block">
                                         <input class="layui-input"  autocomplete="off" placeholder="开始日" name="start" id="start">
                                     </div>
                                     <div class="layui-inline layui-show-xs-block">
                                         <input class="layui-input"  autocomplete="off" placeholder="截止日" name="end" id="end">
+                                    </div>
+                                    <div class="layui-inline layui-show-xs-block">
+                                    <select placeholder="粒度"  name="city" lay-verify="required" lay-search id = "datainterval">
+                                      <option value="0">300</option>
+                                      <option value="1">3600</option>
+                                    </select>
                                     </div>
                                     <div class="layui-inline layui-show-xs-block">
                                         <button class="layui-btn"   id = "searchData"><i class="layui-icon">&#xe615;</i></button>
