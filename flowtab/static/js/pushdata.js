@@ -1,4 +1,4 @@
-   $.ajax({
+$.ajax({
             type: 'get',
             url:/DomainName_info/,
             dataType: "json",
@@ -8,6 +8,7 @@
                 for(var a = 0; a<data.length;a++){
                     console.log(data[a]);
                     str+='<option value = '+data[a].id+'>'+data[a].name+'</option>';
+
                 }
                 $("#yuming").html(str);
                 }
@@ -196,9 +197,9 @@ tooltip : {
             yAxis : [
                 {
                     type : 'value',
-                    axisLabel: {
-                      formatter: function (value) {
-                        if(!value) return ''
+                    axisLabel: {
+                      formatter: function (value) {
+                        if(!value) return ''
                                                 if(value >= 1073741824){
                                                     return (parseInt(value / 1073741824) + "GB");
                                                 } else if (value >= 1048576) {
@@ -208,15 +209,15 @@ tooltip : {
                                                 } else {
                                                     return value + "B";
                                                 }
-                      }
-                  }
+                      }
+                  }
 },
-                                    {
-                  type: 'value',
-                  name: '字节',
-                  axisLabel: {
-                      formatter: '{value} %'
-                  }
+                                    {
+                  type: 'value',
+                  name: '字节',
+                  axisLabel: {
+                      formatter: '{value} %'
+                  }
                                     },
 
             ],
@@ -266,9 +267,9 @@ tooltip : {
             yAxis : [
                 {
                     type : 'value',
-                    axisLabel: {
-                      formatter: function (value) {
-                        if(!value) return ''
+                    axisLabel: {
+                      formatter: function (value) {
+                        if(!value) return ''
                                                 if(value >= 1073741824){
                                                     return (parseInt(value / 1073741824) + "GB");
                                                 } else if (value >= 1048576) {
@@ -278,15 +279,15 @@ tooltip : {
                                                 } else {
                                                     return value + "B";
                                                 }
-                      }
-                  }
+                      }
+                  }
                     },
-                                    {
-                  type: 'value',
-                  name: '字节',
-                  axisLabel: {
-                      formatter: '{value} %'
-                  }
+                                    {
+                  type: 'value',
+                  name: '字节',
+                  axisLabel: {
+                      formatter: '{value} %'
+                  }
                                     },
             ],
             series : [

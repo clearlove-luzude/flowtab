@@ -1,6 +1,4 @@
 
-
-
    layui.use(['laydate','form'], function(){
         var laydate = layui.laydate;
         var  form = layui.form;

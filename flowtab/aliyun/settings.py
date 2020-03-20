@@ -78,11 +78,11 @@ WSGI_APPLICATION = 'aliyun.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': '',
-        'HOST':'',
+        'NAME': 'aliyun',
+        'HOST':'120.79.213.147',
         'PORT': 3306,
-        'USER': '',
-        'PASSWORD': ''
+        'USER': 'ali',
+        'PASSWORD': 'Luzude1234!@#'
     }
 }
 

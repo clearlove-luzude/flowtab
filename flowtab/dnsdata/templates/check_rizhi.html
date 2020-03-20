@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html class="x-admin-sm">
+    <head>
+        <meta charset="UTF-8">
+        <title>ops管理后台</title>
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+        <link rel="stylesheet" href="/static/css/font.css">
+        <link rel="stylesheet" href="/static/css/xadmin.css">
+        <script src="/static/lib/layui/layui.js" charset="utf-8"></script>
+        <script type="text/javascript" src="/static/js/xadmin.js"></script>
+        <!--[if lt IE 9]>
+          <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+          <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+ <div class="layui-card-body layui-table-body layui-table-main">
+                           <table class="layui-hide" id="test" lay-filter="complainList" ></table>
+                        </div>
+
+
+
+    <script>
+        function check_info() {
+        var data = ''
+                $.ajax({
+                    type: "GET",
+                    url: "/check_info/",
+                    data: data,   //序列化
+                    dataType: 'json',
+                    success: function(data){
+                   console.log("success");
+                   console.log(data);
+                   var str = "";
+                   for(var a = 0; a<data.length;a++){
+                      console.log(data[a].name);
+                      //str+='<br><h2>'data[a].name + data[a].count + data[a].value + data[a].time '</h2><br/>';
+                 }
+                 console.log(str);
+                $("#loginForm").html(str);
+                }
+                })
+}
+
+layui.use('table', function(){
+
+  var table = layui.table;
+  treeGrid = layui.treeGrid;
+  table.render({
+    elem: '#test',
+    url:'/check_info/',
+       page: true ,
+        limit:5,
+      limits:[5,15,20],
+    cols: [[
+            {checkbox:true},
+            {field: '报警',  title: '报警' ,templet :function(d){
+           if(d.报警 == '报警'){
+            return '<span style="color: #D03948;">报警</span>';
+            }
+           } } ,
+            {field: '域名',  title: '域名'},
+            {field: '累计次数',  title: '累计次数'},
+            {field: '监控值',  title: '监控值'},
+            {field: '开始时间', title: '开始时间' ,sort:true},
+    ]],
+  })
+  })
+
+
+
+
+</script>
+
+
+    </body>
+</html>
