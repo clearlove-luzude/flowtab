@@ -18,6 +18,8 @@ host=conf.get("mysqld","host")
 user=conf.get("mysqld","user")
 password=conf.get("mysqld","password")
 database=conf.get("mysqld","database")
+euser=conf.get("email","user")
+epassword=conf.get("email","password")
 
 #生成timeid
 def create_id(name,time_id):
@@ -29,7 +31,7 @@ def create_id(name,time_id):
 def emails(to_list, zhuti, message_body_utf8):
     msg = MIMEMultipart()
     msg_to_list = to_list
-    msg['From'] = 'so_notification@zhipu-inc.com'
+    msg['From'] = '%s'%euser
     Header(msg_to_list, 'utf-8')
     msg['Subject'] = Header('%s'%zhuti, 'utf-8')
     content = "<h2>各位好：</h2><li><font color='red' size='1000'> %s </font></li>"%message_body_utf8
@@ -39,6 +41,7 @@ def emails(to_list, zhuti, message_body_utf8):
     server = smtplib.SMTP_SSL('smtp.zhipu-inc.com', 465)
     server.connect('smtp.mxhichina.com')
     server.login('so_notification@zhipu-inc.com','cPsx_bm4an546')
+    server.login('%s'euser,'%s'%epassword)
     server.sendmail(msg['from'],msg_to_list, msg.as_string())
     server.quit()
 
