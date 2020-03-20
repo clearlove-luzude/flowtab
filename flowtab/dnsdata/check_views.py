@@ -41,9 +41,10 @@ def emails(to_list, zhuti, message_body_utf8):
     server = smtplib.SMTP_SSL('smtp.zhipu-inc.com', 465)
     server.connect('smtp.mxhichina.com')
     server.login('so_notification@zhipu-inc.com','cPsx_bm4an546')
-    server.login('%s'euser,'%s'%epassword)
+    server.login('%s'%euser,'%s'%epassword)
     server.sendmail(msg['from'],msg_to_list, msg.as_string())
     server.quit()
+
 
 curdate = time.strftime("%Y-%m-%d")
 print(curdate)

@@ -6,12 +6,9 @@ python3.6 -m venv python_env
 ##进入虚拟环境##  
 source python_env/bin/activate  
 ##下载关连包##  
-pip  install -r  requirements.txt  
+pip -r install  requirements.txt  
   
 在aliyun/settings.py中修改数据库连接地址  
-
-
-在dnsdata/config.ini中修改数据库信息
 
 
 python manage.py makemigrations  

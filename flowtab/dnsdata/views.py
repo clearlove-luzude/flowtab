@@ -15,7 +15,7 @@ from django.http import Http404
 from django.http  import HttpResponse,HttpResponseRedirect
 from dnsdata.models import Cdn_bpsdata
 from dnsdata.models import Cdn_bpsdata
-from dnsdata.models import Cdn_trafficdata,Cdn_bpsdata,DomainName_tab,Cdn_lookcloud,DomainName_tab_shijie,Controls,Controls_info
+from dnsdata.models import Cdn_trafficdata,Cdn_bpsdata,DomainName_tab,Cdn_lookcloud,DomainName_tab_shijie,Controls,Controls_info,Cdn_lookcloud_flow
 from dnsdata.check_views import *
 # Create your views here.
 
@@ -241,6 +241,7 @@ def Get_datas_shijie(request):
         date_to = '%s'%endtime + ' 23:59:59'
         try:
             flowdata = Cdn_lookcloud.objects.all().filter(DomainName='%s'%domianname,DataInterval='%s'%datainterval,TimeStamp_cst__range=["%s"%date_from, "%s"%date_to]).values_list('TimeStamp_cst','Value')
+            flowdata_s = Cdn_lookcloud_flow.objects.all().filter(DomainName='%s'%domianname,DataInterval='%s'%datainterval,TimeStamp_cst__range=["%s"%date_from, "%s"%date_to]).values_list('TimeStamp_cst','Value')
         except:
             status = None
         msg_dict = {}
@@ -249,8 +250,16 @@ def Get_datas_shijie(request):
         flowdata = sorted(flowdata)
         for i in flowdata:
             httpdata = int(i[1].split('.')[0])
+            tralist.append({'times': str(i[0]), 'http': httpdata})
+        msg_dict['flow'] = flowlists
+        msg_dicts = {}
+        msg_dicts[domianname] = msg_dict
+        flowdata_s = sorted(flowdata_s)
+        for i in flowdata_s:
+            httpdata = int(i[1].split('.')[0])
             flowlists.append({'times': str(i[0]), 'http': httpdata})
         msg_dict['flow'] = flowlists
+        msg_dict['tra'] = tralist
         msg_dicts = {}
         msg_dicts[domianname] = msg_dict
         return HttpResponse(json.dumps(msg_dicts), content_type='application/json')
