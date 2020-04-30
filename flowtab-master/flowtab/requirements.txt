@@ -1,0 +1,11 @@
+Django==3.0.2
+PyMySQL==0.9.3
+aliyun-python-sdk-cdn==3.1.0
+aliyun-python-sdk-core==2.13.13
+asgiref==3.2.3
+jmespath==0.9.4
+pip==10.0.1
+pytz==2019.3
+setuptools==39.1.0
+sqlparse==0.3.0
+configparser==4.0.2
