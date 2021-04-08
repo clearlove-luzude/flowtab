@@ -1,4 +1,4 @@
-Django==3.0.2
+Django==3.0.14
 PyMySQL==0.9.3
 aliyun-python-sdk-cdn==3.1.0
 aliyun-python-sdk-core==2.13.13
